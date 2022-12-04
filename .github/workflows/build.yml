@@ -1,4 +1,4 @@
-name: build
+name: Build
 
 on:
   workflow_dispatch:
@@ -9,12 +9,12 @@ on:
     paths-ignore:
       - '**.md'
   schedule:
-    # Build the image regularly (each Friday)
-    - cron: '13 21 * * 5'
+    # Build the image regularly (each Saturday)
+    - cron: '0 22 * * 6'
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: wonderfall/synapse
+  IMAGE_NAME: tommytran732/synapse
 
 jobs:
   build:
