@@ -11,7 +11,8 @@ ARG HARDENED_MALLOC_VERSION
 ARG CONFIG_NATIVE=false
 ARG VARIANT=default
 
-RUN apk --no-cache add build-base git gnupg && cd /tmp \
+RUN apk -U upgrade \
+ && apk --no-cache add build-base git gnupg && cd /tmp \
  && wget -q https://github.com/thestinger.gpg && gpg --import thestinger.gpg \
  && git clone --depth 1 --branch ${HARDENED_MALLOC_VERSION} https://github.com/GrapheneOS/hardened_malloc \
  && cd hardened_malloc && git verify-tag $(git describe --tags) \
@@ -24,7 +25,7 @@ FROM python:alpine as builder
 ARG SYNAPSE_VERSION
 
 RUN apk -U upgrade \
- && apk add -t build-deps \
+ && apk --no-cache add -t build-deps \
         build-base \
         libffi-dev \
         libjpeg-turbo-dev \
@@ -48,7 +49,7 @@ ARG UID
 ARG GID
 
 RUN apk -U upgrade \
- && apk add -t run-deps \
+ && apk --no-cache add -t run-deps \
         libffi \
         libgcc \
         libjpeg-turbo \
