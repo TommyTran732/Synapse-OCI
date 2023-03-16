@@ -45,6 +45,8 @@ RUN apk -U upgrade \
 
 FROM python:alpine
 
+LABEL maintainer="Thien Tran contact@tommytran.io"
+
 ARG UID
 ARG GID
 
