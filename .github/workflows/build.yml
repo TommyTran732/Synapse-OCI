@@ -77,6 +77,7 @@ jobs:
 
   scan:
     name: Scan current image & report results
+    needs: build
     runs-on: "ubuntu-latest"
     steps:
       - name: Checkout code
