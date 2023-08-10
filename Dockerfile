@@ -1,4 +1,5 @@
 ARG SYNAPSE_VERSION=1.89.0
+ARG PYTHON_VERSION=3.11
 ARG HARDENED_MALLOC_VERSION=11
 ARG UID=991
 ARG GID=991
@@ -20,7 +21,7 @@ RUN apk -U upgrade \
 
 
 ### Build Synapse
-FROM python:alpine as builder
+FROM python:${PYTHON_VERSION}-alpine as builder
 
 ARG SYNAPSE_VERSION
 
