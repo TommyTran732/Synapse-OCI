@@ -44,7 +44,7 @@ RUN apk -U upgrade \
 
 ### Build Production
 
-FROM python:alpine
+FROM python:${PYTHON_VERSION}-alpine
 
 LABEL maintainer="Thien Tran contact@tommytran.io"
 
