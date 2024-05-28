@@ -70,8 +70,8 @@ RUN pip install --upgrade pip \
 
 COPY --from=build-malloc /tmp/hardened_malloc/out/libhardened_malloc.so /usr/local/lib/
 COPY --from=builder /install /usr/local
-COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/start.py /start.py
-COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/conf /conf
+COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/docker/start.py /start.py
+COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/docker/conf /conf
 
 ENV LD_PRELOAD="/usr/local/lib/libhardened_malloc.so"
 
