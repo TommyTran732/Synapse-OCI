@@ -6,7 +6,7 @@ ARG GID=991
 
 
 ### Build Hardened Malloc
-FROM alpine:latest as build-malloc
+FROM alpine:latest as hmalloc-builder
 
 ARG HARDENED_MALLOC_VERSION
 ARG CONFIG_NATIVE=false
@@ -25,7 +25,7 @@ RUN cd /tmp \
 
 
 ### Build Synapse
-FROM python:${PYTHON_VERSION}-alpine as builder
+FROM python:${PYTHON_VERSION}-alpine as synapse-builder
 
 ARG SYNAPSE_VERSION
 
@@ -68,8 +68,8 @@ RUN adduser -g ${GID} -u ${UID} --disabled-password --gecos "" synapse
 RUN pip install --upgrade pip \
     && pip install -e "git+https://github.com/matrix-org/mjolnir.git#egg=mjolnir&subdirectory=synapse_antispam"
 
-COPY --from=build-malloc /tmp/hardened_malloc/out/libhardened_malloc.so /usr/local/lib/
-COPY --from=builder /install /usr/local
+COPY --from=hmalloc-builder /tmp/hardened_malloc/out/libhardened_malloc.so /usr/local/lib/
+COPY --from=synapse-builder /install /usr/local
 COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/docker/start.py /start.py
 COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/docker/conf /conf
 
