@@ -38,6 +38,18 @@ RUN rustup-init -y && source $HOME/.cargo/env \
     matrix-synapse[all]==${SYNAPSE_VERSION}
 
 
+### Get RootFS Files
+FROM alpine:latest as rootfs
+
+ARG SYNAPSE_VERSION
+
+RUN apk -U upgrade \
+    && apk --no-cache add git
+
+RUN cd /tmp \
+    && git clone --depth 1 --branch v${SYNAPSE_VERSION} https://github.com/element-hq/synapse
+
+
 ### Build Production
 
 FROM python:${PYTHON_VERSION}-alpine
@@ -58,7 +70,8 @@ RUN pip install --upgrade pip \
 
 COPY --from=build-malloc /tmp/hardened_malloc/out/libhardened_malloc.so /usr/local/lib/
 COPY --from=builder /install /usr/local
-COPY --chown=synapse:synapse rootfs /
+COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/start.py /start.py
+COPY --from=rootfs --chown=synapse:synapse /tmp/synapse/conf /conf
 
 ENV LD_PRELOAD="/usr/local/lib/libhardened_malloc.so"
 
