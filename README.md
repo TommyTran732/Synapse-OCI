@@ -14,6 +14,10 @@
 ### Features & usage
 - Drop-in replacement for the [official image](https://github.com/matrix-org/synapse/tree/develop/docker).
 - Unprivileged image: you should check your volumes permissions (eg `/data`), default UID/GID is 991.
-- Based on [Alpine](https://alpinelinux.org/), which provides more recent packages while having less attack surface.
-- Comes with a [hardened memory allocator](https://github.com/GrapheneOS/hardened_malloc), protecting against some heap-based buffer overflows.
+- Based on the latest [Alpine](https://alpinelinux.org/) containers which provide more recent packages while having less attack surface.
+- Comes with the [hardened memory allocator](https://github.com/GrapheneOS/hardened_malloc) built from the latest tag, protecting against some heap-based buffer overflows.
 - [Mjolnir module](https://github.com/matrix-org/mjolnir/blob/main/docs/synapse_module.md) support.
+
+### Licensing
+- v1.98.0 and prior are under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0). 😇
+- Versions after v1.98.0 are under AGPL 3 🤮 to comply with licensing changes by Element.

@@ -31,8 +31,8 @@ jobs:
 
       - name: Extract version for tags
         run: |
-          echo "FULL_VERSION=$(grep -oP '(?<=SYNAPSE_VERSION=).*' Dockerfile | head -c6)" >> $GITHUB_ENV
-          echo "MAJOR_VERSION=$(grep -oP '(?<=SYNAPSE_VERSION=).*' Dockerfile | head -c4)" >> $GITHUB_ENV
+          echo "FULL_VERSION=$(grep -oP '(?<=SYNAPSE_VERSION=).*' Dockerfile)" >> $GITHUB_ENV
+          echo "MAJOR_VERSION=$(grep -oP '(?<=SYNAPSE_VERSION=).*' Dockerfile | head -c5)" >> $GITHUB_ENV
 
       - name: Install cosign
         if: github.event_name != 'pull_request'
