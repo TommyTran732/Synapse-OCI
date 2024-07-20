@@ -19,7 +19,7 @@ env:
 jobs:
   build:
     name: Build & push new image
-    runs-on: "ubuntu-latest"
+    runs-on: "ubuntu-24.04"
     permissions:
       contents: read
       packages: write
@@ -79,7 +79,7 @@ jobs:
     needs: build
     permissions:
       security-events: write
-    runs-on: "ubuntu-latest"
+    runs-on: "ubuntu-24.04"
     steps:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
@@ -102,7 +102,7 @@ jobs:
     needs: build
     permissions:
       security-events: write
-    runs-on: "ubuntu-latest"
+    runs-on: "uubuntu-24.04"
     steps:
       - name: Run Grype vulnerability scanner
         uses: anchore/scan-action@v4
