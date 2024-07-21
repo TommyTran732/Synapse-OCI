@@ -1,5 +1,13 @@
 # tommytran732/synapse
 
+## DEPRECATION NOTICE
+
+This repository has been deprecated and will stop receiving updates by the end of September 2024.
+
+All development efforts have been moved to [Blue OCI's repository](https://github.com/Blue-OCI/synapse). Please switch your systems to using `ghcr.io/blue-oci/synapse` as the container image.
+
+---
+
 ![Build, scan & push](https://github.com/tommytran732/Synapse-Docker/actions/workflows/build.yml/badge.svg)
 
 [Synapse](https://github.com/matrix-org/synapse) is a [Matrix](https://matrix.org/) implementation written in Python.
