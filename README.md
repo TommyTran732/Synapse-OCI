@@ -4,7 +4,7 @@
 
 This repository has been deprecated and will stop receiving updates by the end of September 2024.
 
-All development efforts have been moved to [Blue OCI's repository](https://github.com/Blue-OCI/synapse). Please switch your systems to using `ghcr.io/blue-oci/synapse` as the container image.
+All development efforts have been moved to [Polarix Containers repository](https://github.com/polarix-containers/synapse). Please switch your systems to using `ghcr.io/blue-oci/synapse` as the container image.
 
 ---
 
